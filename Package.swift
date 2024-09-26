@@ -1,25 +1,31 @@
-// swift-tools-version:5.0
+// swift-tools-version:5.8
 import PackageDescription
 
 let package = Package(
     name: "SocketRocket",
     platforms: [
-        .iOS(.v9),
-        .macOS(.v10_10),
-        .tvOS(.v9),
+        .iOS(.v12),
     ],
     products: [
         .library(
             name: "SocketRocket",
-            targets: ["SocketRocket"]),
+            targets: ["SocketRocket"]
+        ),
     ],
     dependencies: [],
     targets: [
         .target(
             name: "SocketRocket",
             path: "SocketRocket",
-            cSettings: [
-                .headerSearchPath("Internal/**"),
-            ]),
+            exclude: [
+//                "NSRunLoop+SRWebSocket.h",
+//                "NSURLRequest+SRWebSocket.h",
+//                "SRSecurityPolicy.h",
+//                "SRWebSocket.h",
+            ]
+//            cSettings: [
+////                .headerSearchPath("Internal/**"),
+//            ]
+        ),
     ]
 )
